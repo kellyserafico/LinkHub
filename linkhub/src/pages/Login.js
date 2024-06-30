@@ -12,15 +12,22 @@ function Login(){
             <NavBar/>
             <div className="w-screen h-screen bg-dark flex flex-col items-center px-12">
                 <h1 className="mt-[150px] font-bold text-white text-[40px]">welcome back!</h1>
+                <div className="h-3/4 flex flex-col">
+                    <div className="mt-[100px]">
                     <FieldInput label="username / email" type="text" placeholder={"banana@gmail.com"} value={usernameOrEmail} onChange={(e) => setUsernameOrEmail(e.target.value)}/>
+                    </div>
+                    <div className="mt-[100px]">
                     <FieldInput label="password" type="password" placeholder={""} value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    <div className="w-[400px] flex justify-between relative top-[5px]">
+                    </div>
+                    <div className="w-[650px] flex justify-between relative top-[5px]">
                         <a href="#" className="text-gray text-[15px]">forgot password?</a>
-                        <a href="#" className="text-gray text-[15px]">sign up</a>
+                        <a href="/signup" className="text-gray text-[15px]">sign up</a>
                     </div>
-                    <div className="relative top-[100px]">
-                        <Button text="login" onClick={() => console.log("log in")} />
+                    <div className="relative top-[100px] mx-auto">
+                        <Button text="login" onClick={() => console.log("poop")} />
                     </div>
+                </div>
+
             </div>
         </div>
     );
