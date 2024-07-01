@@ -1,9 +1,9 @@
 import {React} from 'react';
 import NavBar from "../components/NavBar.js";
-import FieldInput from '../components/FieldInput';
-import Button from '../components/Button';
+import FieldInput from '../components/FieldInput.js';
+import Button from '../components/Button.js';
 import {useState, useEffect} from 'react';
-function CreateName(){
+function SetName({onNext}){
     const [name, setName] = useState("");
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -32,15 +32,14 @@ function CreateName(){
                 const updatedUser = await response.json();
                 user.name = updatedUser.name;
                 localStorage.setItem('user', JSON.stringify(user));
-                alert('Name updated successfully!');
-                // Redirect or perform additional actions as needed
+                onNext();
+                // alert('Name updated successfully!');
             } catch (error) {
                 alert(error.message);
                 // Handle error, e.g., show error message
             }
         } else {
             alert('User not found. Please log in again.');
-            window.location.href = '/login';
         }
         console.log(user)
     };
@@ -53,11 +52,14 @@ function CreateName(){
                 <div className="relative top-[70px] flex flex-col items-center justify-around h-1/2">
                     <h2 className="mt-4 text-white text-[30px] font-medium">first off, what's your name?</h2>
                     <FieldInput label="" type="text" placeholder={"banana"} width={"500px"} onChange={(e) => setName(e.target.value)}/>
-                    <Button text="next" onClick={() => handleUpdateName()}/>
+                    <Button text="next" onClick={() => {
+                        handleUpdateName();
+                        // window.location.href = '/setpicture';
+                    }}/>
                 </div>
             </div>
         </div>
     );
 }
 
-export default CreateName;
+export default SetName;

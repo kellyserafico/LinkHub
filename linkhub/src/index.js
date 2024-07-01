@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Page from "./pages/Page";
 import Edit from "./pages/Edit";
-import CreateName from "./pages/CreateName";
+import SetProfile from "./pages/SetProfile";
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/page" element={<Page />} />
         <Route path="/edit" element={<Edit />} />
-        <Route path="/createname" element={<CreateName />} />
+        <Route path="/setprofile" element={<SetProfile />} />
       </Routes>
     </BrowserRouter>
   );

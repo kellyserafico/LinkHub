@@ -3,15 +3,10 @@ import NavBar from "../components/NavBar.js"
 import FieldInput from '../components/FieldInput.js';
 import { useState }from 'react';
 import Button from '../components/Button.js';
-import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    function redirectTo(path){
-        navigate(path);
-    }
     async function checkCredentials(){
         try {
             const response = await fetch('http://localhost:8000/login', {
@@ -28,7 +23,7 @@ function Login(){
 
             const user = await response.json();
             console.log('Logged in user:', user);
-            redirectTo("/edit")
+            window.location.href = '/edit';
 
         } catch (error) {
             alert(error.message);

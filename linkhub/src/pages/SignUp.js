@@ -25,7 +25,8 @@ function SignUp(){
           const newUser = await response.json();
           localStorage.setItem('user', JSON.stringify(newUser));
           console.log(newUser);
-          alert('User created successfully');
+          // alert('User created successfully');
+          window.location.href = '/createname';
         } catch (error) {
           console.error('Error creating user:', error.message);
           alert(`Error creating user: ${error.message}`);
