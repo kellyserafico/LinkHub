@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+details summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px;
+    list-style: none;
+}
+
+details[open] summary .fa-chevron-down {
+    transform: rotate(180deg);
+}

@@ -8,7 +8,8 @@ module.exports = {
       'dark': '#0F1011',
       "primary": '#909CC2',
       "white": "#FFFFFF",
-      "gray": "#6C6C6C"
+      "gray": "#6C6C6C",
+      "black": "#000000",
     },
     fontSize:{
       xl: '50px'
