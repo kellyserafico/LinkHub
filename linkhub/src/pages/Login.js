@@ -3,10 +3,39 @@ import NavBar from "../components/NavBar.js"
 import FieldInput from '../components/FieldInput.js';
 import { useState }from 'react';
 import Button from '../components/Button.js';
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    function redirectTo(path){
+        navigate(path);
+    }
+    async function checkCredentials(){
+        try {
+            const response = await fetch('http://localhost:8000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ usernameOrEmail, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Invalid credentials. Please try again');
+            }
+
+            const user = await response.json();
+            console.log('Logged in user:', user);
+            redirectTo("/edit")
+
+        } catch (error) {
+            alert(error.message);
+            // Handle error, e.g., show error message
+        }
+    }
+
     return (
         <div>
             <NavBar/>
@@ -23,9 +52,9 @@ function Login(){
                         <a href="#" className="text-gray text-[15px]">forgot password?</a>
                         <a href="/signup" className="text-gray text-[15px]">sign up</a>
                     </div>
-                    <div className="relative top-[100px] mx-auto">
-                        <Button text="login" onClick={() => console.log("poop")} />
-                    </div>
+                    <a onClick={() => checkCredentials()} className="relative top-[100px] mx-auto">
+                        <Button text="login" />
+                    </a>
                 </div>
 
             </div>
